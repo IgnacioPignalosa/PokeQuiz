@@ -1,0 +1,32 @@
+body {
+    background-color: rgb(50, 157, 245);
+}
+
+.row {
+    background-color: rgb(255, 184, 53);
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.438);
+}
+
+#btnPlay {
+    background-color: #ffffff;
+    font-size: 30px;
+}
+
+#pokeball {
+    height: 130px;
+}
+
+#quizdiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.imgQuiz img {
+    width: 400px;
+}
+
+.hidden {
+    display: none;
+}

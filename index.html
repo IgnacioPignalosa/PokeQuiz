@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeQuiz</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <br>
+    <div class="container d-flex justify-content-end">
+    <div class="row">
+        <div class="col">
+            <h2 class="pt-4"><span class="text-danger pr-1">Score:</span></h2>
+        </div>
+        <div class="col pt-4 pr-4">
+            <h2 id="scoreH">0</h2>
+            <br>
+        </div>
+    </div>
+    </div>
+    <br> <br>
+    <div class="container d-flex justify-content">
+        <br>
+        <div class="row col-3">
+            <h1 class="pt-3 ml-4 pl-2"><span class="text-danger pr-1">Poke</span>Quiz</h1>
+        <div class="col-12">
+            <br>
+            <button class="col-9 pt-1 px-3 pb-3 ml-4 mt-3" id="btnPlay">Play<br><img id="pokeball" src="css/img/pokeball.png" alt="pokeball"></button> <br> <br>
+            <h2 class="hidden ml-4" id="answer">¿Quién es<br>ese<br><span class="text-danger pr-1">Pokémon!?</span></h2>
+            <br>
+            <input class="hidden ml-2" type="text" id="inputRespuesta" placeholder="Pokémon">
+            <br><br>
+        </div>       
+        </div>
+        <div class="col-12" id="quizdiv">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
