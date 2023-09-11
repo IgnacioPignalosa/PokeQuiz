@@ -2,14 +2,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const URL_API = `https://pokeapi.co/api/v2/pokemon/`;
 
-    let score = 0;
+    let score = 0; //Marcador actual del jugador
+
+    let currentPokemonNameGlobal; // Variable global para el nombre del Pokémon actual
 
     const answerInput = document.getElementById('inputRespuesta');
     const playButton = document.getElementById('btnPlay');
     const quizDiv = document.getElementById('quizdiv');
     const answerText = document.getElementById('answer');
     const scoreE = document.getElementById('scoreH');
-
 
     function getRandomNumber(min, max) {
 
@@ -43,11 +44,11 @@ document.addEventListener('DOMContentLoaded', function () {
         quizDiv.innerHTML = '';
         quizDiv.appendChild(question);
 
-    // Obtener el nombre del Pokémon actual desde los datos de la API
-    const currentPokemonName = pokemon.name.toLowerCase();
+        // Obtener el nombre del Pokémon actual desde los datos de la API
+        const currentPokemonName = pokemon.name.toLowerCase();
     
-    // Guardar el nombre del Pokémon actual en una variable global para su posterior comparación
-    currentPokemonNameGlobal = currentPokemonName;
+        // Guardar el nombre del Pokémon actual en una variable global para su posterior comparación
+        currentPokemonNameGlobal = currentPokemonName;
 
         // Mostrar el campo de entrada después de cargar la imagen
         answerText.classList.remove('hidden');
@@ -56,59 +57,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Escuchar el clic de búsqueda
     playButton.addEventListener('click', function () {
-    // Restablecer el marcador a 0
-    score = 0;
-    scoreE.textContent = score;
 
-    // Generar un nuevo número aleatorio
-    const randomNumber = getRandomNumber(1, 1011);
-    const URL_Random = `${URL_API}${randomNumber}`;
+        // Restablecer el marcador a 0
+        score = 0;
+        scoreE.textContent = score;
 
-    // Realizar un fetch y mostrar el Pokémon al hacer clic en el botón
-    fetch(URL_Random)
-        .then((response) => response.json())
-        .then((data) => {
-            displayPokemon(data);
-        })
-        .catch((error) => {
-            console.error("Error en la solicitud:", error);
-        });
-});
+        // Generar un nuevo número aleatorio
+        const randomNumber = getRandomNumber(1, 1011);
+        const URL_Random = `${URL_API}${randomNumber}`;
+
+        // Realizar un fetch y mostrar el Pokémon al hacer clic en el botón
+        fetch(URL_Random)
+            .then((response) => response.json())
+            .then((data) => {
+                displayPokemon(data);
+            })
+            .catch((error) => {
+                console.error("Error en la solicitud:", error);
+            });
+    });
 
     // Escuchar la tecla Enter para buscar
     answerInput.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-        
-        // Obtener la respuesta del usuario
-        const userAnswer = answerInput.value.toLowerCase().trim();
-
-        // Obtener el nombre del Pokémon actual desde la variable global
-        const currentPokemonName = currentPokemonNameGlobal;
-
-        // Comparar la respuesta del usuario con el nombre del Pokémon actual
-        if (userAnswer === currentPokemonName) {
-            // Respuesta correcta, cargar otro Pokémon
-            loadRandomPokemon();
-
-            // Aumentar el marcador
-            score++;
+        if (event.key === 'Enter') {
             
-            // Actualizar el elemento del marcador en la página
-            scoreE.textContent = score;
+            // Obtener la respuesta del usuario
+            const userAnswer = answerInput.value.toLowerCase().trim();
 
-            // Vaciar el input
-            answerInput.value = "";
+            // Obtener el nombre del Pokémon actual desde la variable global
+            const currentPokemonName = currentPokemonNameGlobal;
 
-        } else {
+            // Comparar la respuesta del usuario con el nombre del Pokémon actual
+            if (userAnswer === currentPokemonName) {
+                // Respuesta correcta, cargar otro Pokémon
+                loadRandomPokemon();
 
-            // Vaciar el input
-            answerInput.value = "";
-            
-            // Respuesta incorrecta, realizar una acción (por ejemplo, mostrar un mensaje de error)
-            console.log("Respuesta incorrecta");
+                // Aumentar el marcador
+                score++;
+                
+                // Actualizar el elemento del marcador en la página
+                scoreE.textContent = score;
+
+                // Vaciar el input
+                answerInput.value = "";
+            } else {
+                // Respuesta incorrecta, vaciar el input
+                answerInput.value = "";
+            }
         }
-    }
-
-});
-
+    });
 });
