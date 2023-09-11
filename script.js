@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const answerInput = document.getElementById('inputRespuesta');
     const playButton = document.getElementById('btnPlay');
     const quizDiv = document.getElementById('quizdiv');
-    const answerText = document.getElementById('answer');
+    const questionText = document.getElementById('pregunta');
     const scoreE = document.getElementById('scoreH');
 
     function getRandomNumber(min, max) {
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         currentPokemonNameGlobal = currentPokemonName;
 
         // Mostrar el campo de entrada después de cargar la imagen
-        answerText.classList.remove('hidden');
+        questionText.classList.remove('hidden');
         answerInput.classList.remove('hidden');
     }
 
