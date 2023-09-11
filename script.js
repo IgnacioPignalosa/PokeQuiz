@@ -62,19 +62,9 @@ document.addEventListener('DOMContentLoaded', function () {
         score = 0;
         scoreE.textContent = score;
 
-        // Generar un nuevo número aleatorio
-        const randomNumber = getRandomNumber(1, 1011);
-        const URL_Random = `${URL_API}${randomNumber}`;
+        // Llamamos a la función fetch, cargar otro Pokémon
+        loadRandomPokemon();
 
-        // Realizar un fetch y mostrar el Pokémon al hacer clic en el botón
-        fetch(URL_Random)
-            .then((response) => response.json())
-            .then((data) => {
-                displayPokemon(data);
-            })
-            .catch((error) => {
-                console.error("Error en la solicitud:", error);
-            });
     });
 
     // Escuchar la tecla Enter para buscar
@@ -89,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Comparar la respuesta del usuario con el nombre del Pokémon actual
             if (userAnswer === currentPokemonName) {
+
                 // Respuesta correcta, cargar otro Pokémon
                 loadRandomPokemon();
 
@@ -100,9 +91,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Vaciar el input
                 answerInput.value = "";
+
             } else {
+
                 // Respuesta incorrecta, vaciar el input
                 answerInput.value = "";
+
             }
         }
     });
