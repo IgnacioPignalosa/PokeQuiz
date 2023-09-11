@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function getRandomNumber(min, max) {
+
         // Genera un número aleatorio entre min (incluido) y max (excluido)
         return Math.floor(Math.random() * (max - min)) + min;
     }
@@ -34,15 +35,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para mostrar el resultado del Pokémon
     function displayPokemon(pokemon) {
-        const card = document.createElement('div');
-        card.classList.add('imgQuiz');
-        card.innerHTML = `
+        const question = document.createElement('div');
+        question.classList.add('imgQuiz');
+        question.innerHTML = `
           <img src="${pokemon.sprites.front_default}" alt="pokémon">
         `;
-        quizDiv.innerHTML = ''; // Limpiar resultados anteriores
-        quizDiv.appendChild(card); // Agregar la tarjeta del Pokémon al contenedor de resultados
+        quizDiv.innerHTML = '';
+        quizDiv.appendChild(question);
 
-        // Obtener el nombre del Pokémon actual desde los datos de la API
+    // Obtener el nombre del Pokémon actual desde los datos de la API
     const currentPokemonName = pokemon.name.toLowerCase();
     
     // Guardar el nombre del Pokémon actual en una variable global para su posterior comparación
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
         answerInput.classList.remove('hidden');
     }
 
-   // Escuchar el clic de búsqueda
+    // Escuchar el clic de búsqueda
     playButton.addEventListener('click', function () {
     // Restablecer el marcador a 0
     score = 0;
@@ -77,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Escuchar la tecla Enter para buscar
     answerInput.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
+        
         // Obtener la respuesta del usuario
         const userAnswer = answerInput.value.toLowerCase().trim();
 
