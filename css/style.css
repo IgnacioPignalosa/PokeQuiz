@@ -1,11 +1,11 @@
 body {
-    background-color: rgb(50, 157, 245);
+    background-color: rgb(116, 194, 240);
 }
 
 .row {
     background-color: rgb(255, 184, 53);
     border-radius: 30px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.438);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.568);
 }
 
 #btnPlay {
@@ -21,6 +21,15 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.imgQuiz {
+    margin-right: 40%;
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.568);
+    background-image: url(img/fondo_imagen.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .imgQuiz img {
